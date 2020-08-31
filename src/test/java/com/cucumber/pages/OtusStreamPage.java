@@ -15,6 +15,6 @@ public class OtusStreamPage extends BasePage {
 
     public Integer getNumberOfCourses() {
         String courses = waitForElement(By.xpath(streamCoursesNumberXpath)).getText();
-        return Integer.valueOf(courses.substring(courses.charAt(':')).trim());
+        return Integer.valueOf(courses.substring(courses.indexOf(' ')).trim());
     }
 }

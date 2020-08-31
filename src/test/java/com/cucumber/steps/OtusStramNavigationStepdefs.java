@@ -2,6 +2,7 @@ package com.cucumber.steps;
 
 import com.cucumber.pages.OtusMainPage;
 import com.cucumber.pages.OtusStreamPage;
+import io.cucumber.java.Before;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;

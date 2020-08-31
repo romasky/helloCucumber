@@ -1,5 +1,6 @@
 package com.cucumber.steps;
 
+import com.cucumber.pages.OtusMainPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -15,7 +16,8 @@ public class OtusStramNavigationStepdefs {
 
     @When("I select tab {string}")
     public void selectTab(String tabName) {
-
+        OtusMainPage otusMainPage =  new OtusMainPage();
+        otusMainPage.selectStream(tabName);
     }
 
     @Then("I should see {int} courses on {string} page")

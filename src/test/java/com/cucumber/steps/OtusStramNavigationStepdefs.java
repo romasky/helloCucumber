@@ -1,11 +1,13 @@
 package com.cucumber.steps;
 
 import com.cucumber.pages.OtusMainPage;
+import com.cucumber.pages.OtusStreamPage;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 import static com.cucumber.driver.DriverManager.getWebDriver;
+import static org.assertj.core.api.Assertions.assertThat;
 
 public class OtusStramNavigationStepdefs {
 
@@ -22,6 +24,8 @@ public class OtusStramNavigationStepdefs {
 
     @Then("I should see {int} courses on {string} page")
     public void verifyCourses(Integer coursesNumber, String pageName) {
-
+        OtusStreamPage otusStreamPage = new OtusStreamPage();
+        assertThat(otusStreamPage.getCourseTitle()).isEqualToIgnoringCase(pageName);
+        assertThat(otusStreamPage.getNumberOfCourses()).isEqualTo(coursesNumber);
     }
 }

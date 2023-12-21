@@ -1,20 +1,29 @@
 package com.cucumber.pages;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static java.lang.String.format;
 
 public class OtusStreamPage extends BasePage {
 
-    private String streamTileXpath = "//div[@class ='title-new__text']/h1";
-    private String streamCoursesNumberXpath = "//div[@class ='title-new__info']/div[1]";
 
-    public String getCourseTitle() {
-        return waitForElement(By.xpath(streamTileXpath)).getText().trim();
+    private List<String> streamCoursesNumberXpath = Arrays.asList("(//section)[3]//a");
+
+
+    public String checkCheckboxIsTrue(String tabName) {
+        String streamCheckBoxInstalled = "//label[contains(text(), '" + tabName + "')]/..";
+        return waitForElement(By.xpath(streamCheckBoxInstalled)).getAttribute("value");
     }
 
     public Integer getNumberOfCourses() {
-        String courses = waitForElement(By.xpath(streamCoursesNumberXpath)).getText();
-        return Integer.valueOf(courses.substring(courses.indexOf(' ')).trim());
+        int totalCourses = 0;
+        for (String xpath : streamCoursesNumberXpath) {
+            totalCourses += waitForElements(By.xpath(xpath)).size();
+        }
+        return totalCourses;
     }
 }

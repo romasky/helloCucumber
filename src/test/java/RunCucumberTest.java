@@ -11,6 +11,6 @@ import org.junit.runner.RunWith;
         glue = {"com.cucumber.steps"},
         features = "src/test/resources/features",
         monochrome = true)
-public class RunCucumberTest {
+public class  RunCucumberTest {
 
 }
